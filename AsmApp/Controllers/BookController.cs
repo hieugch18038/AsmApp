@@ -1,5 +1,6 @@
 ﻿using AsmApp.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace AsmApp.Controllers
@@ -16,9 +17,10 @@ namespace AsmApp.Controllers
             var books = context.Book.ToList();
             return View(books);
         }
-        public IActionResult Store()
+        public IActionResult Detail(int id)
         {
-            return View(context.Book.ToList());
+            var books = context.Book.Include(b => b.Category).Include(b => b.Author).FirstOrDefault(b => b.Id == id);
+            return View(books);
         }
     }
 }

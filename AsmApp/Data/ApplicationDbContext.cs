@@ -13,7 +13,7 @@ namespace AsmApp.Data
             : base(options)
         {
         }
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Category> Category { get; set; }   
         public DbSet<Book> Book { get; set; }
         public DbSet<Author> Author { get; set; }
 
